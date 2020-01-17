@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
 
 class App extends React.Component {
@@ -7,29 +7,29 @@ class App extends React.Component {
     super();
 
     this.state = {
-
-      
+      players: [ ]
     }
-    
   }
   
+  componentDidMount() {
+    axios.get('http://localhost:5000/api/players')
+      .then(res => {
+        this.setState({ players: res.data})
+      })
+      .catch(err => {
+        console.log('sorry we could not get that data for you', err)
+      })
+  }
+
   render(){
+    console.log(this.state.players)
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            map over individual player data
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+
       </div>
     );
   }
