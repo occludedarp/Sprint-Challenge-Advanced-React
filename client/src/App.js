@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import { PlayerCard } from './components/PlayerCard'
 import './App.css';
 
 class App extends React.Component {
   constructor(){
     super();
-
     this.state = {
       players: [ ]
     }
@@ -25,11 +25,13 @@ class App extends React.Component {
     console.log(this.state.players)
     return (
       <div className="App">
-
-          <p>
-            map over individual player data
-          </p>
-
+        {this.state.players.map(player => (
+          <PlayerCard
+            name={player.name}
+            country={player.country}
+            searchInt={player.searches}
+          />
+        ))}
       </div>
     );
   }

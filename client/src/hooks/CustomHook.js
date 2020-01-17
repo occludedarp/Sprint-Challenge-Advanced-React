@@ -1,6 +1,8 @@
-import { useEffect } from 'react;
+import { useState } from 'react';
 
-const CustomHook = () => {
-  
+export const CustomHook = () => {
 
-}
+  // const [ , ] = useState()
+
+  return [ , , ];
+};
